@@ -470,7 +470,7 @@ function TimelineStep({ number, title, description, imageSrc, color }: { number:
       </div>
 
       <div className="order-1 md:order-2 relative aspect-video overflow-hidden clip-tech-corner bg-white/5">
-        <div className={`absolute inset-0 bg-${color}/20 mix-blend-overlay z-10`} />
+        <div className={`absolute inset-0 mix-blend-overlay z-10 ${color === 'primary' ? 'bg-primary/20' : 'bg-secondary/20'}`} />
         <Image
           src={imageSrc}
           alt={title}
