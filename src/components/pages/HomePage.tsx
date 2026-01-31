@@ -159,7 +159,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10" />
             <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background z-10" />
             <Image
-              src="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=1"
+              src="https://static.wixstatic.com/media/b1e8b0_02ddcecccbb64d1d8e2363fb662e5559~mv2.png?originWidth=1600&originHeight=896"
               alt="Cyber Atelier Background"
               className="w-full h-full object-cover opacity-30 grayscale contrast-125"
             />
@@ -276,7 +276,7 @@ export default function HomePage() {
         {/* --- IMMERSIVE BREAK --- */}
         <section className="relative w-full h-[60vh] overflow-hidden flex items-center justify-center my-12">
           <div className="absolute inset-0 bg-fixed bg-cover bg-center grayscale opacity-40" 
-               style={{ backgroundImage: 'url(https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=2)' }} 
+               style={{ backgroundImage: 'url(https://static.wixstatic.com/media/b1e8b0_0ba6168e0c52411d9c42d1eec6d3d757~mv2.png?originWidth=960&originHeight=512)' }} 
           />
           <div className="absolute inset-0 bg-black/60" />
           <div className="relative z-10 text-center max-w-4xl px-6">
@@ -320,21 +320,21 @@ export default function HomePage() {
                 number="01" 
                 title="Data Acquisition" 
                 description="Utilize the 'Snap to Links' module to capture real-world fashion data. Our AI analyzes visual inputs to identify accessories and garments instantly."
-                imageSrc="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=3"
+                imageSrc="https://static.wixstatic.com/media/b1e8b0_caa98638d42a4785878b1d745e17a114~mv2.png?originWidth=1600&originHeight=896"
                 color="primary"
               />
               <TimelineStep 
                 number="02" 
                 title="Synthesis & Design" 
                 description="Enter the Design Studio. Combine acquired assets with your digital wallet inventory. Use the editor to modify textures, cuts, and physics."
-                imageSrc="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=4"
+                imageSrc="https://static.wixstatic.com/media/b1e8b0_fb632c50e528439daee638dfcbc51dd7~mv2.png?originWidth=1600&originHeight=896"
                 color="secondary"
               />
               <TimelineStep 
                 number="03" 
                 title="Deployment & Trade" 
                 description="Publish your creations to the Designer Forum. Set your royalty rates and trade with a global network of digital fashion enthusiasts."
-                imageSrc="https://static.wixstatic.com/media/12d367_71ebdd7141d041e4be3d91d80d4578dd~mv2.png?id=5"
+                imageSrc="https://static.wixstatic.com/media/b1e8b0_faf5bce126ba4dd584beecade92cfd40~mv2.png?originWidth=1600&originHeight=896"
                 color="primary"
               />
             </div>
