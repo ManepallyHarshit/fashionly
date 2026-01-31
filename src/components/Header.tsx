@@ -9,12 +9,10 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'SNAP TO LINKS', href: '/snap-to-links' },
     { label: 'SHOP', href: '/store' },
+    { label: 'MARKETPLACE', href: '/designer-forum' },
     { label: 'DESIGN STUDIO', href: '/design-studio' },
-    { label: 'DESIGNER FORUM', href: '/designer-forum' },
-    { label: 'EDITOR', href: '/design-editor' },
-    { label: 'BILLING', href: '/billing' },
+    { label: 'VAULT', href: '/vault' },
   ];
 
   return (

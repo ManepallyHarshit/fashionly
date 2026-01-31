@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Star, Download, ShoppingCart, Filter, TrendingUp } from 'lucide-react';
+import { Star, Download, ShoppingCart, Filter, TrendingUp, Award, Users } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AIAssistant from '@/components/AIAssistant';
@@ -12,6 +12,7 @@ interface Design {
   id: string;
   name: string;
   designer: string;
+  designerReputation: number;
   price: number;
   rating: number;
   downloads: number;
@@ -27,6 +28,7 @@ export default function DesignerForumPage() {
       id: '1',
       name: 'CYBER NEON PATTERN',
       designer: 'TECH_VISIONARY',
+      designerReputation: 4.9,
       price: 49.99,
       rating: 4.9,
       downloads: 1234,
@@ -37,6 +39,7 @@ export default function DesignerForumPage() {
       id: '2',
       name: 'GEOMETRIC GRID SYSTEM',
       designer: 'GRID_MASTER',
+      designerReputation: 4.7,
       price: 39.99,
       rating: 4.7,
       downloads: 892,
@@ -47,6 +50,7 @@ export default function DesignerForumPage() {
       id: '3',
       name: 'GLITCH EFFECT OVERLAY',
       designer: 'DIGITAL_ARTIST',
+      designerReputation: 4.8,
       price: 29.99,
       rating: 4.8,
       downloads: 1567,
@@ -57,6 +61,7 @@ export default function DesignerForumPage() {
       id: '4',
       name: 'HOLOGRAPHIC TEXTURE',
       designer: 'FUTURE_DESIGNER',
+      designerReputation: 5.0,
       price: 59.99,
       rating: 5.0,
       downloads: 2341,
@@ -67,6 +72,7 @@ export default function DesignerForumPage() {
       id: '5',
       name: 'MINIMALIST SILHOUETTE',
       designer: 'CLEAN_LINES',
+      designerReputation: 4.6,
       price: 34.99,
       rating: 4.6,
       downloads: 678,
@@ -77,6 +83,7 @@ export default function DesignerForumPage() {
       id: '6',
       name: 'ABSTRACT COMPOSITION',
       designer: 'ART_COLLECTIVE',
+      designerReputation: 4.9,
       price: 44.99,
       rating: 4.9,
       downloads: 1123,
@@ -210,12 +217,24 @@ export default function DesignerForumPage() {
 
                 {/* Design Info */}
                 <div className="p-6">
-                  <h3 className="font-heading text-lg uppercase mb-2 group-hover:text-primary transition-colors">
-                    {design.name}
-                  </h3>
-                  <p className="font-paragraph text-xs text-foreground/50 mb-4">
-                    BY {design.designer}
-                  </p>
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="font-heading text-lg uppercase mb-2 group-hover:text-primary transition-colors">
+                        {design.name}
+                      </h3>
+                      <p className="font-paragraph text-xs text-foreground/50 mb-2">
+                        BY {design.designer}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Designer Reputation */}
+                  <div className="flex items-center gap-2 mb-4 p-2 bg-white/[0.03] border border-glass-border rounded">
+                    <Award className="w-4 h-4 text-secondary" />
+                    <span className="font-paragraph text-xs text-foreground/70">
+                      REPUTATION: {design.designerReputation}
+                    </span>
+                  </div>
 
                   {/* Stats */}
                   <div className="flex items-center gap-4 mb-4">

@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -10,19 +11,70 @@ interface Message {
   text: string;
   sender: 'user' | 'ai';
   timestamp: Date;
+  action?: { label: string; route: string };
+}
+
+interface Command {
+  keywords: string[];
+  response: string;
+  action?: { label: string; route: string };
 }
 
 export default function AIAssistant() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m your AI fashion assistant. I can help you with design suggestions, color selection based on trends, styling advice, and navigating the platform. How can I assist you today?',
+      text: 'Hello! I\'m your AI Command Center. I can help you navigate the platform, suggest designs, and answer questions. Try saying "Take me to the studio" or "Show me the marketplace"!',
       sender: 'ai',
       timestamp: new Date(),
     },
   ]);
   const [inputValue, setInputValue] = useState('');
+
+  const commands: Command[] = [
+    {
+      keywords: ['studio', 'design studio', 'create', 'design'],
+      response: 'Taking you to the Design Studio where you can create and customize your designs.',
+      action: { label: 'Open Design Studio', route: '/design-studio' },
+    },
+    {
+      keywords: ['shop', 'store', 'browse', 'shopping'],
+      response: 'Opening the Shop where you can browse and purchase fashion items.',
+      action: { label: 'Browse Shop', route: '/store' },
+    },
+    {
+      keywords: ['forum', 'marketplace', 'designer forum', 'buy designs'],
+      response: 'Taking you to the Designer Forum to explore and purchase exclusive designs.',
+      action: { label: 'Visit Designer Forum', route: '/designer-forum' },
+    },
+    {
+      keywords: ['vault', 'closet', 'my skins', 'digital closet'],
+      response: 'Opening your Vault - your private digital closet where you store all your purchased and created skins.',
+      action: { label: 'Open Vault', route: '/vault' },
+    },
+    {
+      keywords: ['snap', 'visual search', 'find items', 'photo'],
+      response: 'Opening Snap to Links - upload a photo to find similar fashion items instantly.',
+      action: { label: 'Use Snap to Links', route: '/snap-to-links' },
+    },
+    {
+      keywords: ['billing', 'earnings', 'wallet', 'ledger', 'transactions'],
+      response: 'Taking you to your Billing & Earnings dashboard to manage your finances.',
+      action: { label: 'View Billing', route: '/billing' },
+    },
+    {
+      keywords: ['editor', 'edit', 'modify'],
+      response: 'Opening the Design Editor for advanced customization and creation.',
+      action: { label: 'Open Editor', route: '/design-editor' },
+    },
+    {
+      keywords: ['home', 'main', 'dashboard'],
+      response: 'Taking you back to the home dashboard.',
+      action: { label: 'Go Home', route: '/' },
+    },
+  ];
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -37,38 +89,59 @@ export default function AIAssistant() {
     setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
 
-    // Simulate AI response
+    // Simulate AI response with command detection
     setTimeout(() => {
-      const aiResponse: Message = {
+      const response = getAIResponse(inputValue);
+      setMessages((prev) => [...prev, response]);
+    }, 800);
+  };
+
+  const getAIResponse = (userInput: string): Message => {
+    const input = userInput.toLowerCase();
+    
+    // Check for command matches
+    for (const command of commands) {
+      if (command.keywords.some(keyword => input.includes(keyword))) {
+        return {
+          id: (Date.now() + 1).toString(),
+          text: command.response,
+          sender: 'ai',
+          timestamp: new Date(),
+          action: command.action,
+        };
+      }
+    }
+    
+    // Default responses for other queries
+    if (input.includes('color') || input.includes('trend')) {
+      return {
         id: (Date.now() + 1).toString(),
-        text: getAIResponse(inputValue),
+        text: 'Based on current fashion trends, neon accents like cyan (#00F0FF) and magenta (#FF00E5) are dominating the digital fashion space. For classic elegance, consider pairing dark bases with metallic highlights.',
         sender: 'ai',
         timestamp: new Date(),
       };
-      setMessages((prev) => [...prev, aiResponse]);
-    }, 1000);
+    }
+    
+    if (input.includes('help') || input.includes('what can')) {
+      return {
+        id: (Date.now() + 1).toString(),
+        text: 'I can help you navigate to: Design Studio, Shop, Designer Forum, Snap to Links, Billing, or Design Editor. Just ask me to take you anywhere!',
+        sender: 'ai',
+        timestamp: new Date(),
+      };
+    }
+    
+    return {
+      id: (Date.now() + 1).toString(),
+      text: 'I can help you navigate the platform. Try asking me to take you to the studio, shop, forum, or billing dashboard!',
+      sender: 'ai',
+      timestamp: new Date(),
+    };
   };
 
-  const getAIResponse = (userInput: string): string => {
-    const input = userInput.toLowerCase();
-    
-    if (input.includes('color') || input.includes('trend')) {
-      return 'Based on current fashion trends, neon accents like cyan (#00F0FF) and magenta (#FF00E5) are dominating the digital fashion space. For classic elegance, consider pairing dark bases with metallic highlights. Would you like specific color palette recommendations for your design?';
-    }
-    
-    if (input.includes('design') || input.includes('create')) {
-      return 'To create a design, navigate to the Design Studio where you can use templates from your wallet or start from scratch. I recommend beginning with a base silhouette and then adding custom elements. Would you like me to guide you through the design process?';
-    }
-    
-    if (input.includes('sell') || input.includes('forum')) {
-      return 'To sell your designs on the Designer Forum, ensure your work is original or properly licensed. High-quality renders and detailed descriptions increase sales. You can set your own pricing and earn directly through the platform. Need help pricing your designs?';
-    }
-    
-    if (input.includes('shop') || input.includes('buy')) {
-      return 'You can browse our shop for ready-made fashion items or use Snap to Links to find specific accessories from photos. All purchases are processed securely through our billing system. Looking for something specific?';
-    }
-    
-    return 'I\'m here to help with design creation, color selection, trend analysis, and platform navigation. Could you provide more details about what you\'d like assistance with?';
+  const handleActionClick = (route: string) => {
+    navigate(route);
+    setIsOpen(false);
   };
 
   return (
@@ -99,8 +172,8 @@ export default function AIAssistant() {
                 <Sparkles className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="font-heading text-sm uppercase text-primary">AI ASSISTANT</h3>
-                <p className="font-paragraph text-xs text-foreground/50">ALWAYS ONLINE</p>
+                <h3 className="font-heading text-sm uppercase text-primary">COMMAND CENTER</h3>
+                <p className="font-paragraph text-xs text-foreground/50">NAVIGATION HUB</p>
               </div>
             </div>
 
@@ -113,13 +186,22 @@ export default function AIAssistant() {
                     className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
-                      className={`max-w-[80%] p-3 rounded ${
+                      className={`max-w-[85%] p-3 rounded ${ 
                         message.sender === 'user'
                           ? 'bg-primary text-primary-foreground'
                           : 'bg-white/[0.03] border border-glass-border text-foreground'
                       }`}
                     >
                       <p className="font-paragraph text-sm">{message.text}</p>
+                      {message.action && (
+                        <button
+                          onClick={() => handleActionClick(message.action!.route)}
+                          className="mt-2 flex items-center gap-1 text-xs font-bold text-primary hover:text-primary/80 transition-colors"
+                        >
+                          {message.action.label}
+                          <ArrowRight className="w-3 h-3" />
+                        </button>
+                      )}
                       <p className="font-paragraph text-xs opacity-50 mt-1">
                         {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </p>
