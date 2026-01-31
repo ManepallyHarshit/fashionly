@@ -176,18 +176,18 @@ export default function HomePage() {
               <div className="flex items-center justify-center gap-4 mb-6">
                 <div className="h-px w-12 bg-primary" />
                 <span className="font-paragraph text-xs md:text-sm text-primary tracking-[0.3em] uppercase">
-                  System Online v2.0
+                  Personal Style DNA
                 </span>
                 <div className="h-px w-12 bg-primary" />
               </div>
               
               <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 mb-6">
-                Cyber<br />Atelier
+                SYNTHARA
               </h1>
               
               <p className="font-paragraph text-sm md:text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
-                A high-performance fashion interface where design meets technology. 
-                Engineer your aesthetic in a precision-driven digital environment.
+                Discover your unique style DNA. Powered by AI, personalized for you.
+                Transform your fashion identity with precision-engineered recommendations.
               </p>
             </motion.div>
 
@@ -221,15 +221,15 @@ export default function HomePage() {
                 <>
                   <div className="flex flex-col items-center gap-2 mb-4">
                     <span className="font-paragraph text-xs text-primary/70 tracking-widest uppercase">
-                      Welcome back, {member?.profile?.nickname || member?.contact?.firstName || 'Operator'}
+                      Welcome back, {member?.profile?.nickname || member?.contact?.firstName || 'Creator'}
                     </span>
                   </div>
                   <Link
-                    to="/design-studio"
+                    to="/onboarding"
                     className="clip-tech-button group relative px-12 py-5 bg-primary hover:bg-primary/90 transition-all duration-300"
                   >
                     <span className="relative font-paragraph font-bold text-primary-foreground tracking-wider flex items-center gap-2">
-                      <Cpu className="w-5 h-5" /> Access Design Core
+                      <Sparkles className="w-5 h-5" /> Discover Your DNA
                     </span>
                   </Link>
                 </>
