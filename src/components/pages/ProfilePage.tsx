@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { User, Mail, Calendar, Edit, Wallet, TrendingUp } from 'lucide-react';
+import { User, Mail, Calendar, Edit, Wallet, TrendingUp, Settings } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AIAssistant from '@/components/AIAssistant';
@@ -8,9 +9,11 @@ import { Button } from '@/components/ui/button';
 import { MemberProtectedRoute } from '@/components/ui/member-protected-route';
 import { useMember } from '@/integrations';
 import { Image } from '@/components/ui/image';
+import { useUserProfileStore } from '@/stores/userProfileStore';
 
 function ProfileContent() {
   const { member } = useMember();
+  const { profile } = useUserProfileStore();
 
   const stats = [
     { label: 'DESIGNS CREATED', value: '12' },
@@ -91,6 +94,69 @@ function ProfileContent() {
                 EDIT PROFILE
               </Button>
             </Card>
+
+            {/* Profile Setup Status */}
+            {!profile.setupCompleted && (
+              <Card className="p-6 bg-secondary/10 backdrop-blur-xl border border-secondary/30 mt-6">
+                <div className="flex items-start gap-3 mb-4">
+                  <Settings className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-heading text-sm uppercase text-secondary mb-1">
+                      COMPLETE YOUR PROFILE
+                    </h3>
+                    <p className="font-paragraph text-xs text-foreground/70 mb-3">
+                      Set up your identity, physique, skin tone, and style preferences
+                    </p>
+                    <Link to="/setup-wizard">
+                      <Button size="sm" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                        START SETUP
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+            )}
+
+            {/* Profile Data Display */}
+            {profile.setupCompleted && (
+              <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border mt-6">
+                <h3 className="font-heading text-lg uppercase mb-4 text-primary">
+                  PROFILE DATA
+                </h3>
+                <div className="space-y-3 text-xs font-paragraph">
+                  {profile.height && (
+                    <div className="flex justify-between">
+                      <span className="text-foreground/70">Height:</span>
+                      <span className="text-primary">{profile.height} cm</span>
+                    </div>
+                  )}
+                  {profile.weight && (
+                    <div className="flex justify-between">
+                      <span className="text-foreground/70">Weight:</span>
+                      <span className="text-primary">{profile.weight} kg</span>
+                    </div>
+                  )}
+                  {profile.build && (
+                    <div className="flex justify-between">
+                      <span className="text-foreground/70">Build:</span>
+                      <span className="text-primary uppercase">{profile.build}</span>
+                    </div>
+                  )}
+                  {profile.skinTone && (
+                    <div className="flex justify-between">
+                      <span className="text-foreground/70">Skin Tone:</span>
+                      <span className="text-primary uppercase">{profile.skinTone}</span>
+                    </div>
+                  )}
+                  {profile.stylePersona && (
+                    <div className="flex justify-between">
+                      <span className="text-foreground/70">Style:</span>
+                      <span className="text-primary uppercase">{profile.stylePersona}</span>
+                    </div>
+                  )}
+                </div>
+              </Card>
+            )}
 
             {/* Quick Stats */}
             <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border mt-6">

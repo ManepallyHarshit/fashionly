@@ -17,6 +17,7 @@ import DesignEditorPage from '@/components/pages/DesignEditorPage';
 import BillingPage from '@/components/pages/BillingPage';
 import ProfilePage from '@/components/pages/ProfilePage';
 import VaultPage from '@/components/pages/VaultPage';
+import SetupWizardPage from '@/components/pages/SetupWizardPage';
 
 // Layout component with WixServicesProvider
 function Layout() {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "vault",
         element: <VaultPage />,
+      },
+      {
+        path: "setup-wizard",
+        element: <SetupWizardPage />,
       },
       {
         path: 'store',

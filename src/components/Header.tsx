@@ -13,6 +13,7 @@ export default function Header() {
     { label: 'MARKETPLACE', href: '/designer-forum' },
     { label: 'DESIGN STUDIO', href: '/design-studio' },
     { label: 'VAULT', href: '/vault' },
+    { label: 'SETUP', href: '/setup-wizard' },
   ];
 
   return (
