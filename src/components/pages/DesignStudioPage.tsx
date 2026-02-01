@@ -52,7 +52,7 @@ function DesignStudioContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-charcoal via-[#0A0C0F] to-deepest-black text-foreground relative">
+    <div className="min-h-screen text-foreground relative">
       {/* Background Image - STUDIO ZERO */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
         <Image
@@ -62,16 +62,9 @@ function DesignStudioContent() {
         />
       </div>
       
-      {/* Grid Overlay */}
+      {/* Grid Overlay - Studio Zero specific */}
       <div 
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent),
-            linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent)
-          `,
-          backgroundSize: '20px 20px',
-        }}
+        className="fixed inset-0 pointer-events-none z-0 studio-grid"
       />
       
       <Header />
