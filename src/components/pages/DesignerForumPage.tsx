@@ -7,6 +7,7 @@ import AIAssistant from '@/components/AIAssistant';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Image } from '@/components/ui/image';
 
 interface Design {
   id: string;
@@ -105,7 +106,16 @@ export default function DesignerForumPage() {
     : designs.filter((d) => d.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      {/* Background Image - THE ARCHIVE */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-15">
+        <Image
+          src="https://static.wixstatic.com/media/b1e8b0_f4105518cd1f40758ab44872d0817dc2~mv2.png?originWidth=1600&originHeight=896"
+          alt="The Archive: Close-up of high-quality fabric textures and minimalist garments rack - Browsing & Selecting Base Designs"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
       <Header />
 
       <main className="w-full max-w-[100rem] mx-auto px-8 py-16">

@@ -7,6 +7,7 @@ import AIAssistant from '@/components/AIAssistant';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Image } from '@/components/ui/image';
 import { MemberProtectedRoute } from '@/components/ui/member-protected-route';
 
 interface Transaction {
@@ -77,7 +78,16 @@ function BillingContent() {
   const netBalance = totalEarnings - totalSpent;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      {/* Background Image - THE LEDGER */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-10">
+        <Image
+          src="https://static.wixstatic.com/media/b1e8b0_2422aed773ae4a7ea09ee4038ad58758~mv2.png?originWidth=1600&originHeight=896"
+          alt="The Ledger: Macro shot of sleek dark-wood texture and architectural details - Transaction & Earnings Management"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
       <Header />
 
       <main className="w-full max-w-[100rem] mx-auto px-8 py-16">

@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import AIAssistant from '@/components/AIAssistant';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Image } from '@/components/ui/image';
 import { MemberProtectedRoute } from '@/components/ui/member-protected-route';
 
 interface DesignElement {
@@ -52,7 +53,16 @@ function DesignStudioContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal via-[#0A0C0F] to-deepest-black text-foreground relative">
-      {/* Grid Overlay - Studio Zero specific */}
+      {/* Background Image - STUDIO ZERO */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-20">
+        <Image
+          src="https://static.wixstatic.com/media/b1e8b0_26194b53baee46678e8f5643589401d3~mv2.png?originWidth=1600&originHeight=896"
+          alt="Studio Zero: Clean white-space technical workspace with digital wireframes, mannequin, and blueprint grid lines"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
+      {/* Grid Overlay */}
       <div 
         className="fixed inset-0 pointer-events-none z-0"
         style={{

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Slider } from '@/components/ui/slider';
+import { Image } from '@/components/ui/image';
 import { MemberProtectedRoute } from '@/components/ui/member-protected-route';
 
 function DesignEditorContent() {
@@ -23,7 +24,16 @@ function DesignEditorContent() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      {/* Background Image - STUDIO ZERO */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-15">
+        <Image
+          src="https://static.wixstatic.com/media/b1e8b0_26194b53baee46678e8f5643589401d3~mv2.png?originWidth=1600&originHeight=896"
+          alt="Studio Zero: Clean white-space technical workspace with digital wireframes, mannequin, and blueprint grid lines"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
       <Header />
 
       <main className="w-full max-w-[100rem] mx-auto px-8 py-16">

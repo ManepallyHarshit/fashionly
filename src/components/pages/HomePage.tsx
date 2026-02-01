@@ -159,8 +159,8 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10" />
             <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background z-10" />
             <Image
-              src="https://static.wixstatic.com/media/b1e8b0_02ddcecccbb64d1d8e2363fb662e5559~mv2.png?originWidth=1600&originHeight=896"
-              alt="Cyber Atelier Background"
+              src="https://static.wixstatic.com/media/b1e8b0_18a7a51d59604a1db92ae2bc7a203edc~mv2.png?originWidth=1600&originHeight=896"
+              alt="The Atelier: Minimalist sun-drenched lobby with high ceilings and marble plinth - Discovery & Brand Introduction"
               className="w-full h-full object-cover opacity-30 grayscale contrast-125"
             />
           </motion.div>

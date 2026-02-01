@@ -7,6 +7,7 @@ import AIAssistant from '@/components/AIAssistant';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Image } from '@/components/ui/image';
 import { MemberProtectedRoute } from '@/components/ui/member-protected-route';
 
 interface Skin {
@@ -102,7 +103,16 @@ function VaultContent() {
   const totalValue = skins.reduce((sum, skin) => sum + skin.price, 0);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      {/* Background Image - THE VAULT */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-15">
+        <Image
+          src="https://static.wixstatic.com/media/b1e8b0_55abb32e194442be9af68036034334d8~mv2.png?originWidth=1600&originHeight=896"
+          alt="The Vault: Dark moody room with single spotlight on glass display case - Personal Collection & Design Storage"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
       <Header />
 
       <main className="w-full max-w-[100rem] mx-auto px-8 py-16">
