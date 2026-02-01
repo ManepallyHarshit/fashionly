@@ -199,23 +199,30 @@ export default function HomePage() {
             >
               {!isAuthenticated ? (
                 <>
-                  <button
+                  <motion.button
                     onClick={actions.login}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                     className="clip-tech-button group relative px-10 py-4 bg-primary hover:bg-primary/90 transition-all duration-300"
                   >
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                     <span className="relative font-paragraph font-bold text-primary-foreground tracking-wider flex items-center gap-2">
                       <Scan className="w-4 h-4" /> Initialize Session
                     </span>
-                  </button>
-                  <Link
-                    to="/store"
-                    className="clip-tech-button px-10 py-4 border border-white/20 hover:border-primary/50 hover:bg-white/5 transition-all duration-300"
+                  </motion.button>
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <span className="font-paragraph font-bold text-foreground tracking-wider">
-                      Browse Database
-                    </span>
-                  </Link>
+                    <Link
+                      to="/store"
+                      className="clip-tech-button px-10 py-4 border border-white/20 hover:border-primary/50 hover:bg-white/5 transition-all duration-300 block"
+                    >
+                      <span className="font-paragraph font-bold text-foreground tracking-wider">
+                        Browse Database
+                      </span>
+                    </Link>
+                  </motion.div>
                 </>
               ) : (
                 <>
@@ -224,34 +231,44 @@ export default function HomePage() {
                       Welcome back, {member?.profile?.nickname || member?.contact?.firstName || 'Creator'}
                     </span>
                   </div>
-                  <Link
-                    to="/onboarding"
-                    className="clip-tech-button group relative px-12 py-5 bg-primary hover:bg-primary/90 transition-all duration-300"
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <span className="relative font-paragraph font-bold text-primary-foreground tracking-wider flex items-center gap-2">
-                      <Sparkles className="w-5 h-5" /> Discover Your DNA
-                    </span>
-                  </Link>
+                    <Link
+                      to="/onboarding"
+                      className="clip-tech-button group relative px-12 py-5 bg-primary hover:bg-primary/90 transition-all duration-300 block"
+                    >
+                      <span className="relative font-paragraph font-bold text-primary-foreground tracking-wider flex items-center gap-2">
+                        <Sparkles className="w-5 h-5" /> Discover Your DNA
+                      </span>
+                    </Link>
+                  </motion.div>
                 </>
               )}
             </motion.div>
           </div>
 
           {/* Scroll Indicator */}
-          <motion.div 
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+          <motion.button 
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity duration-300"
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
+            onClick={() => {
+              const element = document.querySelector('[data-section="features"]');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            aria-label="Scroll to features section"
           >
-            <span className="font-paragraph text-[10px] text-white/30 uppercase tracking-widest">Scroll to Navigate</span>
+            <span className="font-paragraph text-[10px] text-white/30 uppercase tracking-widest hover:text-white/50 transition-colors">Scroll to Navigate</span>
             <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent" />
-          </motion.div>
+          </motion.button>
         </section>
 
         <Marquee text="DIGITAL CRAFTSMANSHIP // GLOBAL MARKETPLACE // AI-ASSISTED DESIGN //" />
 
         {/* --- FEATURES GRID (DASHBOARD) --- */}
-        <section className="relative w-full py-32 px-6 md:px-12 max-w-[120rem] mx-auto">
+        <section className="relative w-full py-32 px-6 md:px-12 max-w-[120rem] mx-auto" data-section="features">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-border-subtle pb-8">
             <div>
               <h2 className="font-heading text-4xl md:text-6xl uppercase mb-4">
@@ -369,14 +386,19 @@ export default function HomePage() {
                   </span>
                 </button>
               ) : (
-                <Link
-                  to="/design-studio"
-                  className="clip-tech-button px-16 py-6 bg-primary hover:bg-primary-hover text-primary-foreground transition-all duration-300"
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <span className="font-paragraph font-bold text-lg tracking-widest uppercase">
-                    Launch Studio
-                  </span>
-                </Link>
+                  <Link
+                    to="/design-studio"
+                    className="clip-tech-button px-16 py-6 bg-primary hover:bg-primary-hover text-primary-foreground transition-all duration-300 block"
+                  >
+                    <span className="font-paragraph font-bold text-lg tracking-widest uppercase">
+                      Launch Studio
+                    </span>
+                  </Link>
+                </motion.div>
               )}
             </div>
           </div>
@@ -405,16 +427,20 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
     >
       <Link
         to={feature.link}
-        className="group relative block h-full bg-surface border border-border-subtle hover:border-primary/50 transition-all duration-500 overflow-hidden"
+        className="group relative block h-full bg-surface border border-border-subtle hover:border-primary/50 transition-all duration-500 overflow-hidden hover:shadow-lg hover:shadow-primary/20"
       >
         {/* Hover Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         <div className="relative p-8 flex flex-col h-full">
           <div className="flex justify-between items-start mb-8">
-            <div className={`p-3 rounded-sm bg-surface-alt ${feature.color === 'primary' ? 'text-primary' : 'text-tech-accent'}`}>
+            <motion.div 
+              className={`p-3 rounded-sm bg-surface-alt ${feature.color === 'primary' ? 'text-primary' : 'text-tech-accent'}`}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ duration: 0.3 }}
+            >
               <feature.icon className="w-8 h-8" />
-            </div>
+            </motion.div>
             <span className="font-paragraph text-[10px] text-foreground/30 uppercase tracking-widest">
               MOD.0{index + 1}
             </span>

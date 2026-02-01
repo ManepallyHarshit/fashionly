@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Upload, Camera, Search, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Upload, Camera, Search, ExternalLink, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AIAssistant from '@/components/AIAssistant';
@@ -106,39 +106,57 @@ export default function SnapToLinksPage() {
               </h2>
 
               {!uploadedImage ? (
-                <label className="block cursor-pointer">
-                  <div className="aspect-square border-2 border-dashed border-border-subtle rounded flex flex-col items-center justify-center hover:border-primary transition-colors">
-                    <Upload className="w-16 h-16 text-primary mb-4" />
+                <motion.label 
+                  className="block cursor-pointer"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.div 
+                    className="aspect-square border-2 border-dashed border-border-subtle rounded flex flex-col items-center justify-center hover:border-primary transition-colors group"
+                    whileHover={{ backgroundColor: 'rgba(212, 175, 55, 0.05)' }}
+                  >
+                    <motion.div
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                    >
+                      <Upload className="w-16 h-16 text-primary mb-4 group-hover:scale-110 transition-transform" />
+                    </motion.div>
                     <p className="font-paragraph text-sm text-foreground/70 mb-2">
                       CLICK TO UPLOAD OR DRAG & DROP
                     </p>
                     <p className="font-paragraph text-xs text-foreground/50">
                       JPG, PNG, WEBP (MAX 10MB)
                     </p>
-                  </div>
+                  </motion.div>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleImageUpload}
                     className="hidden"
                   />
-                </label>
+                </motion.label>
               ) : (
-                <div className="space-y-4">
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <div className="aspect-square rounded overflow-hidden border border-border-subtle">
                     <Image src={uploadedImage} alt="Uploaded" className="w-full h-full object-cover" />
                   </div>
-                  <Button
+                  <motion.button
                     onClick={() => {
                       setUploadedImage(null);
                       setDetectedItems([]);
                     }}
-                    variant="outline"
-                    className="w-full border-border-subtle"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full px-4 py-2 border border-border-subtle hover:border-primary bg-surface hover:bg-surface-alt transition-all duration-300 font-paragraph text-sm uppercase tracking-wider text-foreground/70 hover:text-primary rounded"
                   >
                     UPLOAD NEW IMAGE
-                  </Button>
-                </div>
+                  </motion.button>
+                </motion.div>
               )}
 
               <div className="mt-8 p-4 bg-primary/10 border border-primary/30 rounded">
@@ -169,58 +187,85 @@ export default function SnapToLinksPage() {
               </h2>
 
               {isAnalyzing ? (
-                <div className="flex flex-col items-center justify-center h-96">
-                  <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4" />
+                <motion.div 
+                  className="flex flex-col items-center justify-center h-96"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  <motion.div 
+                    className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full mb-4"
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+                  />
                   <p className="font-paragraph text-sm text-foreground/70">
                     ANALYZING IMAGE...
                   </p>
-                </div>
+                </motion.div>
               ) : detectedItems.length > 0 ? (
-                <div className="space-y-4">
-                  {detectedItems.map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      className="p-4 bg-white/[0.03] border border-glass-border rounded hover:border-primary/50 transition-colors"
-                    >
-                      <div className="flex items-start justify-between mb-3">
-                        <div>
-                          <h3 className="font-heading text-lg uppercase mb-1">
-                            {item.name}
-                          </h3>
-                          <p className="font-paragraph text-xs text-foreground/50">
-                            {item.category}
-                          </p>
-                        </div>
-                        <div className="text-right">
-                          <div className="font-paragraph text-sm text-primary">
-                            {item.confidence}%
-                          </div>
-                          <div className="font-paragraph text-xs text-foreground/50">
-                            MATCH
-                          </div>
-                        </div>
-                      </div>
-                      <a
-                        href={item.shopLink}
-                        className="inline-flex items-center gap-2 font-paragraph text-xs uppercase text-primary hover:text-primary/80 transition-colors"
+                <motion.div 
+                  className="space-y-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <AnimatePresence>
+                    {detectedItems.map((item, index) => (
+                      <motion.div
+                        key={item.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        whileHover={{ scale: 1.02, backgroundColor: 'rgba(212, 175, 55, 0.1)' }}
+                        className="p-4 bg-white/[0.03] border border-glass-border rounded hover:border-primary/50 transition-colors cursor-pointer"
                       >
-                        <Search className="w-4 h-4" />
-                        FIND IN SHOP
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </motion.div>
-                  ))}
-                </div>
+                        <div className="flex items-start justify-between mb-3">
+                          <div>
+                            <h3 className="font-heading text-lg uppercase mb-1">
+                              {item.name}
+                            </h3>
+                            <p className="font-paragraph text-xs text-foreground/50">
+                              {item.category}
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <motion.div 
+                              className="font-paragraph text-sm text-primary"
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              transition={{ delay: index * 0.1 + 0.2 }}
+                            >
+                              {item.confidence}%
+                            </motion.div>
+                            <div className="font-paragraph text-xs text-foreground/50">
+                              MATCH
+                            </div>
+                          </div>
+                        </div>
+                        <motion.a
+                          href={item.shopLink}
+                          whileHover={{ x: 4 }}
+                          className="inline-flex items-center gap-2 font-paragraph text-xs uppercase text-primary hover:text-primary/80 transition-colors"
+                        >
+                          <Search className="w-4 h-4" />
+                          FIND IN SHOP
+                          <ExternalLink className="w-3 h-3" />
+                        </motion.a>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                </motion.div>
               ) : (
-                <div className="flex flex-col items-center justify-center h-96 text-center">
+                <motion.div 
+                  className="flex flex-col items-center justify-center h-96 text-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
                   <Search className="w-16 h-16 text-foreground/30 mb-4" />
                   <p className="font-paragraph text-sm text-foreground/50">
                     UPLOAD AN IMAGE TO START DETECTION
                   </p>
-                </div>
+                </motion.div>
               )}
             </Card>
           </motion.div>
@@ -234,30 +279,42 @@ export default function SnapToLinksPage() {
           transition={{ duration: 0.6 }}
           className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          <div className="p-6 glass-card aura-glow rounded">
+          <motion.div 
+            className="p-6 glass-card aura-glow rounded"
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
             <h3 className="font-heading text-xl uppercase mb-3 text-primary">
               AI-POWERED
             </h3>
             <p className="font-paragraph text-sm text-foreground/70">
               Advanced computer vision technology identifies fashion items with high accuracy
             </p>
-          </div>
-          <div className="p-6 glass-card aura-glow rounded">
+          </motion.div>
+          <motion.div 
+            className="p-6 glass-card aura-glow rounded"
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
             <h3 className="font-heading text-xl uppercase mb-3 text-primary">
               INSTANT RESULTS
             </h3>
             <p className="font-paragraph text-sm text-foreground/70">
               Get product matches and shop links in seconds, not minutes
             </p>
-          </div>
-          <div className="p-6 glass-card aura-glow rounded">
+          </motion.div>
+          <motion.div 
+            className="p-6 glass-card aura-glow rounded"
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
             <h3 className="font-heading text-xl uppercase mb-3 text-primary">
               DIRECT SHOPPING
             </h3>
             <p className="font-paragraph text-sm text-foreground/70">
               Click through to purchase similar items immediately from our curated collection
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </main>
 

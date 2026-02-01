@@ -33,6 +33,11 @@
     position: relative;
     z-index: 2;
   }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Glassmorphic card styling */
@@ -57,5 +62,15 @@
       linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent),
       linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
     background-size: 20px 20px;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  a, button {
+    @apply transition-all duration-300;
+  }
+
+  /* Focus states for accessibility */
+  a:focus-visible, button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
   }
 }
