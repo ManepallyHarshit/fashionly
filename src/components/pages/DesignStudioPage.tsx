@@ -51,10 +51,22 @@ function DesignStudioContent() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-gradient-to-br from-charcoal via-[#0A0C0F] to-deepest-black text-foreground relative">
+      {/* Grid Overlay - Studio Zero specific */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent)
+          `,
+          backgroundSize: '20px 20px',
+        }}
+      />
+      
       <Header />
 
-      <main className="w-full max-w-[100rem] mx-auto px-8 py-16">
+      <main className="w-full max-w-[100rem] mx-auto px-8 py-16 relative z-10">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,7 +91,7 @@ function DesignStudioContent() {
             className="space-y-6"
           >
             {/* Templates */}
-            <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-6 glass-card aura-glow">
               <h2 className="font-heading text-lg uppercase mb-4 text-primary">
                 TEMPLATES
               </h2>
@@ -106,7 +118,7 @@ function DesignStudioContent() {
             </Card>
 
             {/* Wallet Designs */}
-            <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-6 glass-card aura-glow">
               <h2 className="font-heading text-lg uppercase mb-4 text-secondary">
                 MY WALLET
               </h2>
@@ -128,7 +140,7 @@ function DesignStudioContent() {
             </Card>
 
             {/* Tools */}
-            <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-6 glass-card aura-glow">
               <h2 className="font-heading text-lg uppercase mb-4 text-primary">
                 TOOLS
               </h2>
@@ -168,7 +180,7 @@ function DesignStudioContent() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-2"
           >
-            <Card className="p-8 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-8 glass-card aura-glow">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="font-heading text-xl uppercase text-primary">
                   CANVAS
@@ -229,7 +241,7 @@ function DesignStudioContent() {
             className="space-y-6"
           >
             {/* Layers */}
-            <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-6 glass-card aura-glow">
               <h2 className="font-heading text-lg uppercase mb-4 text-primary">
                 LAYERS
               </h2>
@@ -260,7 +272,7 @@ function DesignStudioContent() {
             </Card>
 
             {/* Color Palette */}
-            <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-6 glass-card aura-glow">
               <h2 className="font-heading text-lg uppercase mb-4 text-secondary">
                 COLORS
               </h2>
@@ -273,7 +285,7 @@ function DesignStudioContent() {
             </Card>
 
             {/* AI Suggestions */}
-            <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-6 glass-card aura-glow">
               <h2 className="font-heading text-lg uppercase mb-4 text-primary">
                 AI SUGGESTIONS
               </h2>

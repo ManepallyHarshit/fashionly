@@ -49,7 +49,7 @@ function DesignEditorContent() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-6 glass-card aura-glow">
               <h2 className="font-heading text-lg uppercase mb-4 text-primary">
                 MY DESIGNS
               </h2>

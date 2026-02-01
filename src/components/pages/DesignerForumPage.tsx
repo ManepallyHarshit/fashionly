@@ -131,25 +131,25 @@ export default function DesignerForumPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12"
         >
-          <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border text-center">
+          <Card className="p-6 glass-card aura-glow text-center">
             <div className="font-heading text-3xl text-primary mb-2">2,456</div>
             <div className="font-paragraph text-xs text-foreground/50 uppercase">
               TOTAL DESIGNS
             </div>
           </Card>
-          <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border text-center">
+          <Card className="p-6 glass-card aura-glow text-center">
             <div className="font-heading text-3xl text-secondary mb-2">847</div>
             <div className="font-paragraph text-xs text-foreground/50 uppercase">
               ACTIVE DESIGNERS
             </div>
           </Card>
-          <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border text-center">
+          <Card className="p-6 glass-card aura-glow text-center">
             <div className="font-heading text-3xl text-primary mb-2">15.2K</div>
             <div className="font-paragraph text-xs text-foreground/50 uppercase">
               DOWNLOADS
             </div>
           </Card>
-          <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border text-center">
+          <Card className="p-6 glass-card aura-glow text-center">
             <div className="font-heading text-3xl text-secondary mb-2">4.8</div>
             <div className="font-paragraph text-xs text-foreground/50 uppercase">
               AVG RATING
@@ -194,7 +194,7 @@ export default function DesignerForumPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="overflow-hidden bg-white/[0.03] backdrop-blur-xl border-glass-border hover:border-primary/50 transition-all group">
+              <Card className="overflow-hidden glass-card aura-glow hover:border-primary/50 transition-all group">
                 {/* Design Preview */}
                 <div className="aspect-square bg-gradient-to-br from-primary/20 via-background to-secondary/20 relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -275,7 +275,7 @@ export default function DesignerForumPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-16 p-12 bg-white/[0.03] backdrop-blur-xl border border-glass-border rounded text-center"
+          className="mt-16 p-12 glass-card aura-glow rounded text-center"
         >
           <h2 className="font-heading text-4xl uppercase mb-4">
             BECOME A DESIGNER

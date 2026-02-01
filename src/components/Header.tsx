@@ -9,11 +9,11 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'SHOP', href: '/store' },
-    { label: 'MARKETPLACE', href: '/designer-forum' },
-    { label: 'DESIGN STUDIO', href: '/design-studio' },
-    { label: 'VAULT', href: '/vault' },
-    { label: 'SETUP', href: '/setup-wizard' },
+    { label: 'COLLECTION', href: '/store' },
+    { label: 'CREATORS', href: '/designer-forum' },
+    { label: 'STUDIO ZERO', href: '/design-studio' },
+    { label: 'ARCHIVE', href: '/vault' },
+    { label: 'ONBOARD', href: '/setup-wizard' },
   ];
 
   return (

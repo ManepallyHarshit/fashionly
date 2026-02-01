@@ -36,7 +36,10 @@ export default {
                 primary: '#D4AF37',
                 'primary-hover': '#B89B82',
                 'tech-accent': '#40E0FF',
-                'border-subtle': '#273140'
+                'border-subtle': '#273140',
+                'aura-cyan': '#40E0FF',
+                'charcoal': '#0B0D10',
+                'deepest-black': '#050505',
             },
         },
     },

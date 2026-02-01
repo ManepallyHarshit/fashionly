@@ -50,7 +50,7 @@ function ProfileContent() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-1"
           >
-            <Card className="p-8 bg-white/[0.03] backdrop-blur-xl border-glass-border text-center">
+            <Card className="p-8 glass-card aura-glow text-center">
               <div className="w-32 h-32 mx-auto mb-6 bg-primary/20 rounded-full flex items-center justify-center">
                 {member?.profile?.photo?.url ? (
                   <Image src={member.profile.photo.url} alt="Profile" className="w-full h-full rounded-full object-cover" />
@@ -119,7 +119,7 @@ function ProfileContent() {
 
             {/* Profile Data Display */}
             {profile.setupCompleted && (
-              <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border mt-6">
+              <Card className="p-6 glass-card aura-glow mt-6">
                 <h3 className="font-heading text-lg uppercase mb-4 text-primary">
                   PROFILE DATA
                 </h3>
@@ -159,7 +159,7 @@ function ProfileContent() {
             )}
 
             {/* Quick Stats */}
-            <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border mt-6">
+            <Card className="p-6 glass-card aura-glow mt-6">
               <h3 className="font-heading text-lg uppercase mb-4 text-primary">
                 QUICK STATS
               </h3>
@@ -186,7 +186,7 @@ function ProfileContent() {
             className="lg:col-span-2 space-y-6"
           >
             {/* Wallet */}
-            <Card className="p-8 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-8 glass-card aura-glow">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <Wallet className="w-6 h-6 text-primary" />
@@ -221,7 +221,7 @@ function ProfileContent() {
             </Card>
 
             {/* Recent Activity */}
-            <Card className="p-8 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-8 glass-card aura-glow">
               <div className="flex items-center gap-3 mb-6">
                 <TrendingUp className="w-6 h-6 text-secondary" />
                 <h2 className="font-heading text-2xl uppercase">RECENT ACTIVITY</h2>

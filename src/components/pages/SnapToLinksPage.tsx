@@ -154,7 +154,7 @@ export default function SnapToLinksPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="p-8 bg-white/[0.03] backdrop-blur-xl border-glass-border min-h-[600px]">
+            <Card className="p-8 glass-card aura-glow min-h-[600px]">
               <h2 className="font-heading text-2xl uppercase mb-6 text-secondary">
                 DETECTED ITEMS
               </h2>
@@ -225,7 +225,7 @@ export default function SnapToLinksPage() {
           transition={{ duration: 0.6 }}
           className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          <div className="p-6 bg-white/[0.03] backdrop-blur-xl border border-glass-border rounded">
+          <div className="p-6 glass-card aura-glow rounded">
             <h3 className="font-heading text-xl uppercase mb-3 text-primary">
               AI-POWERED
             </h3>
@@ -233,7 +233,7 @@ export default function SnapToLinksPage() {
               Advanced computer vision technology identifies fashion items with high accuracy
             </p>
           </div>
-          <div className="p-6 bg-white/[0.03] backdrop-blur-xl border border-glass-border rounded">
+          <div className="p-6 glass-card aura-glow rounded">
             <h3 className="font-heading text-xl uppercase mb-3 text-primary">
               INSTANT RESULTS
             </h3>
@@ -241,7 +241,7 @@ export default function SnapToLinksPage() {
               Get product matches and shop links in seconds, not minutes
             </p>
           </div>
-          <div className="p-6 bg-white/[0.03] backdrop-blur-xl border border-glass-border rounded">
+          <div className="p-6 glass-card aura-glow rounded">
             <h3 className="font-heading text-xl uppercase mb-3 text-primary">
               DIRECT SHOPPING
             </h3>
