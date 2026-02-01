@@ -39,7 +39,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-background border-t border-glass-border">
+    <footer className="w-full bg-background border-t border-border-subtle">
       <div className="max-w-[100rem] mx-auto px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Brand Section */}
@@ -56,7 +56,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 flex items-center justify-center bg-white/[0.03] border border-glass-border rounded hover:border-primary transition-colors"
+                  className="w-10 h-10 flex items-center justify-center bg-surface border border-border-subtle rounded hover:border-primary transition-colors"
                 >
                   <social.icon className="w-5 h-5 text-foreground/70" />
                 </a>
@@ -87,7 +87,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-glass-border">
+        <div className="pt-8 border-t border-border-subtle">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-paragraph text-xs text-foreground/50">
               © 2026 CYBER-ATELIER. ALL RIGHTS RESERVED.

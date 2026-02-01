@@ -23,15 +23,20 @@ export default {
                 paragraph: "azeret-mono"
             },
             colors: {
-                'glass-border': 'rgba(255, 255, 255, 0.1)',
+                'glass-border': '#273140',
                 destructive: '#FF3B3B',
                 'destructive-foreground': '#FFFFFF',
-                background: '#0A0A0A',
-                secondary: '#FF00E5',
-                foreground: '#F0F0F0',
+                background: '#0B0D10',
+                'surface': '#151A21',
+                'surface-alt': '#1E2530',
+                secondary: '#40E0FF',
+                foreground: '#F0EEE9',
                 'secondary-foreground': '#FFFFFF',
-                'primary-foreground': '#0A0A0A',
-                primary: '#00F0FF'
+                'primary-foreground': '#0B0D10',
+                primary: '#D4AF37',
+                'primary-hover': '#B89B82',
+                'tech-accent': '#40E0FF',
+                'border-subtle': '#273140'
             },
         },
     },

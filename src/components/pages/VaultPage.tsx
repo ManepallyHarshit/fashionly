@@ -132,19 +132,19 @@ function VaultContent() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
         >
-          <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border text-center">
+          <Card className="p-6 bg-surface backdrop-blur-xl border-border-subtle text-center">
             <div className="font-heading text-3xl text-primary mb-2">{skins.length}</div>
             <div className="font-paragraph text-xs text-foreground/50 uppercase">
               TOTAL SKINS
             </div>
           </Card>
-          <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border text-center">
-            <div className="font-heading text-3xl text-secondary mb-2">${totalValue.toFixed(2)}</div>
+          <Card className="p-6 bg-surface backdrop-blur-xl border-border-subtle text-center">
+            <div className="font-heading text-3xl text-tech-accent mb-2">${totalValue.toFixed(2)}</div>
             <div className="font-paragraph text-xs text-foreground/50 uppercase">
               COLLECTION VALUE
             </div>
           </Card>
-          <Card className="p-6 bg-white/[0.03] backdrop-blur-xl border-glass-border text-center">
+          <Card className="p-6 bg-surface backdrop-blur-xl border-border-subtle text-center">
             <div className="font-heading text-3xl text-primary mb-2">
               {skins.filter((s) => s.featured).length}
             </div>
@@ -169,7 +169,7 @@ function VaultContent() {
                 className={`p-2 rounded transition-all ${
                   viewMode === 'grid'
                     ? 'bg-primary text-primary-foreground'
-                    : 'bg-white/[0.03] border border-glass-border text-foreground/70 hover:text-foreground'
+                    : 'bg-surface border border-border-subtle text-foreground/70 hover:text-foreground'
                 }`}
               >
                 <Grid className="w-5 h-5" />
@@ -179,13 +179,13 @@ function VaultContent() {
                 className={`p-2 rounded transition-all ${
                   viewMode === 'list'
                     ? 'bg-primary text-primary-foreground'
-                    : 'bg-white/[0.03] border border-glass-border text-foreground/70 hover:text-foreground'
+                    : 'bg-surface border border-border-subtle text-foreground/70 hover:text-foreground'
                 }`}
               >
                 <List className="w-5 h-5" />
               </button>
             </div>
-            <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+            <Button className="bg-primary hover:bg-primary-hover text-primary-foreground">
               <Plus className="w-4 h-4 mr-2" />
               ADD NEW SKIN
             </Button>
@@ -200,7 +200,7 @@ function VaultContent() {
                 className={`font-paragraph text-xs uppercase px-6 py-3 border rounded transition-all ${
                   selectedCategory === category.id
                     ? 'bg-primary text-primary-foreground border-primary'
-                    : 'bg-transparent text-foreground border-glass-border hover:border-primary'
+                    : 'bg-transparent text-foreground border-border-subtle hover:border-primary'
                 }`}
               >
                 {category.label}
@@ -219,9 +219,9 @@ function VaultContent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="overflow-hidden bg-white/[0.03] backdrop-blur-xl border-glass-border hover:border-primary/50 transition-all group">
+                <Card className="overflow-hidden bg-surface backdrop-blur-xl border-border-subtle hover:border-primary/50 transition-all group">
                   {/* Preview */}
-                  <div className="aspect-square bg-gradient-to-br from-primary/20 via-background to-secondary/20 relative overflow-hidden">
+                  <div className="aspect-square bg-gradient-to-br from-primary/20 via-background to-tech-accent/20 relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
                         <div className="font-heading text-5xl text-foreground/20 mb-2">
@@ -233,7 +233,7 @@ function VaultContent() {
                       </div>
                     </div>
                     {skin.featured && (
-                      <Badge className="absolute top-4 right-4 bg-secondary text-secondary-foreground">
+                      <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
                         <Star className="w-3 h-3 mr-1 fill-current" />
                         FEATURED
                       </Badge>
@@ -265,7 +265,7 @@ function VaultContent() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 border-glass-border"
+                        className="flex-1 border-border-subtle"
                       >
                         <Download className="w-4 h-4 mr-2" />
                         USE
@@ -273,7 +273,7 @@ function VaultContent() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="border-glass-border text-destructive hover:text-destructive/80"
+                        className="border-border-subtle text-destructive hover:text-destructive/80"
                       >
                         <Trash2 className="w-4 h-4" />
                       </Button>
@@ -291,7 +291,7 @@ function VaultContent() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="p-6 bg-white/[0.03] backdrop-blur-xl border border-glass-border rounded hover:border-primary/50 transition-all group"
+                className="p-6 bg-surface backdrop-blur-xl border border-border-subtle rounded hover:border-primary/50 transition-all group"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
@@ -300,7 +300,7 @@ function VaultContent() {
                         {skin.name}
                       </h3>
                       {skin.featured && (
-                        <Badge className="bg-secondary text-secondary-foreground">
+                        <Badge className="bg-primary text-primary-foreground">
                           <Star className="w-3 h-3 mr-1 fill-current" />
                           FEATURED
                         </Badge>
@@ -324,7 +324,7 @@ function VaultContent() {
                     <div className="flex gap-2">
                       <Button
                         size="sm"
-                        className="bg-primary text-primary-foreground hover:bg-primary/90"
+                        className="bg-primary text-primary-foreground hover:bg-primary-hover"
                       >
                         <Download className="w-4 h-4 mr-2" />
                         USE
@@ -332,7 +332,7 @@ function VaultContent() {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="border-glass-border text-destructive hover:text-destructive/80"
+                        className="border-border-subtle text-destructive hover:text-destructive/80"
                       >
                         <Trash2 className="w-4 h-4" />
                       </Button>
@@ -356,7 +356,7 @@ function VaultContent() {
             <p className="font-paragraph text-lg text-foreground/50 mb-6">
               NO SKINS IN THIS CATEGORY YET
             </p>
-            <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+            <Button className="bg-primary hover:bg-primary-hover text-primary-foreground">
               <Plus className="w-4 h-4 mr-2" />
               ADD YOUR FIRST SKIN
             </Button>

@@ -149,7 +149,7 @@ export default function AIAssistant() {
       {/* Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg hover:bg-primary/90 transition-all"
+        className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-tech-accent text-primary-foreground rounded-full flex items-center justify-center shadow-lg hover:bg-tech-accent/90 transition-all"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -164,15 +164,15 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-8 z-50 w-96 h-[600px] bg-background/95 backdrop-blur-xl border border-glass-border rounded shadow-2xl flex flex-col"
+            className="fixed bottom-24 right-8 z-50 w-96 h-[600px] bg-background/95 backdrop-blur-xl border border-border-subtle rounded shadow-2xl flex flex-col"
           >
             {/* Header */}
-            <div className="p-4 border-b border-glass-border flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-primary" />
+            <div className="p-4 border-b border-border-subtle flex items-center gap-3">
+              <div className="w-10 h-10 bg-tech-accent/20 rounded-full flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-tech-accent" />
               </div>
               <div>
-                <h3 className="font-heading text-sm uppercase text-primary">COMMAND CENTER</h3>
+                <h3 className="font-heading text-sm uppercase text-tech-accent">COMMAND CENTER</h3>
                 <p className="font-paragraph text-xs text-foreground/50">NAVIGATION HUB</p>
               </div>
             </div>
@@ -188,15 +188,15 @@ export default function AIAssistant() {
                     <div
                       className={`max-w-[85%] p-3 rounded ${ 
                         message.sender === 'user'
-                          ? 'bg-primary text-primary-foreground'
-                          : 'bg-white/[0.03] border border-glass-border text-foreground'
+                          ? 'bg-tech-accent text-primary-foreground'
+                          : 'bg-surface border border-border-subtle text-foreground'
                       }`}
                     >
                       <p className="font-paragraph text-sm">{message.text}</p>
                       {message.action && (
                         <button
                           onClick={() => handleActionClick(message.action!.route)}
-                          className="mt-2 flex items-center gap-1 text-xs font-bold text-primary hover:text-primary/80 transition-colors"
+                          className="mt-2 flex items-center gap-1 text-xs font-bold text-tech-accent hover:text-tech-accent/80 transition-colors"
                         >
                           {message.action.label}
                           <ArrowRight className="w-3 h-3" />
@@ -212,18 +212,18 @@ export default function AIAssistant() {
             </ScrollArea>
 
             {/* Input */}
-            <div className="p-4 border-t border-glass-border">
+            <div className="p-4 border-t border-border-subtle">
               <div className="flex gap-2">
                 <Input
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="ASK ME ANYTHING..."
-                  className="flex-1 bg-white/[0.03] border-glass-border font-paragraph text-sm"
+                  className="flex-1 bg-surface border-border-subtle font-paragraph text-sm"
                 />
                 <Button
                   onClick={handleSendMessage}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="bg-tech-accent text-primary-foreground hover:bg-tech-accent/90"
                   size="icon"
                 >
                   <Send className="w-4 h-4" />

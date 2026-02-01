@@ -75,15 +75,15 @@ const FEATURES_DATA: Feature[] = [
 
 const SectionDivider = () => (
   <div className="w-full flex items-center justify-center py-12 opacity-30">
-    <div className="h-px w-full max-w-[200px] bg-gradient-to-r from-transparent via-primary to-transparent" />
-    <div className="mx-4 text-xs font-paragraph text-primary tracking-widest">///</div>
-    <div className="h-px w-full max-w-[200px] bg-gradient-to-r from-transparent via-primary to-transparent" />
+    <div className="h-px w-full max-w-[200px] bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
+    <div className="mx-4 text-xs font-paragraph text-border-subtle tracking-widest">///</div>
+    <div className="h-px w-full max-w-[200px] bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
   </div>
 );
 
 const Marquee = ({ text, direction = 1 }: { text: string; direction?: number }) => {
   return (
-    <div className="relative flex overflow-hidden py-4 bg-primary/5 border-y border-primary/10">
+    <div className="relative flex overflow-hidden py-4 bg-primary/5 border-y border-border-subtle">
       <motion.div
         className="flex whitespace-nowrap font-paragraph text-xs md:text-sm tracking-[0.2em] text-primary/70 uppercase"
         animate={{ x: direction === 1 ? [0, -1000] : [-1000, 0] }}
@@ -91,7 +91,7 @@ const Marquee = ({ text, direction = 1 }: { text: string; direction?: number }) 
       >
         {Array(10).fill(text).map((item, i) => (
           <span key={i} className="mx-8 flex items-center gap-4">
-            {item} <span className="w-2 h-2 bg-secondary rounded-full" />
+            {item} <span className="w-2 h-2 bg-tech-accent rounded-full" />
           </span>
         ))}
       </motion.div>
@@ -252,7 +252,7 @@ export default function HomePage() {
 
         {/* --- FEATURES GRID (DASHBOARD) --- */}
         <section className="relative w-full py-32 px-6 md:px-12 max-w-[120rem] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-white/10 pb-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-border-subtle pb-8">
             <div>
               <h2 className="font-heading text-4xl md:text-6xl uppercase mb-4">
                 System Modules
@@ -345,10 +345,10 @@ export default function HomePage() {
 
         {/* --- CTA SECTION --- */}
         <section className="relative w-full py-32 px-6 md:px-12 max-w-[120rem] mx-auto">
-          <div className="relative clip-tech-corner bg-white/[0.02] border border-white/10 p-12 md:p-24 overflow-hidden">
+          <div className="relative clip-tech-corner bg-surface/50 border border-border-subtle p-12 md:p-24 overflow-hidden">
             {/* Decorative Background Elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-tech-accent/10 blur-[100px] rounded-full pointer-events-none" />
             
             <div className="relative z-10 flex flex-col items-center text-center">
               <Zap className="w-12 h-12 text-primary mb-8" />
@@ -362,7 +362,7 @@ export default function HomePage() {
               {!isAuthenticated ? (
                 <button
                   onClick={actions.login}
-                  className="clip-tech-button px-16 py-6 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300"
+                  className="clip-tech-button px-16 py-6 bg-primary hover:bg-primary-hover text-primary-foreground transition-all duration-300"
                 >
                   <span className="font-paragraph font-bold text-lg tracking-widest uppercase">
                     Create Account
@@ -371,7 +371,7 @@ export default function HomePage() {
               ) : (
                 <Link
                   to="/design-studio"
-                  className="clip-tech-button px-16 py-6 bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all duration-300"
+                  className="clip-tech-button px-16 py-6 bg-primary hover:bg-primary-hover text-primary-foreground transition-all duration-300"
                 >
                   <span className="font-paragraph font-bold text-lg tracking-widest uppercase">
                     Launch Studio
@@ -405,17 +405,17 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
     >
       <Link
         to={feature.link}
-        className="group relative block h-full bg-white/[0.02] border border-white/5 hover:border-primary/50 transition-all duration-500 overflow-hidden"
+        className="group relative block h-full bg-surface border border-border-subtle hover:border-primary/50 transition-all duration-500 overflow-hidden"
       >
         {/* Hover Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         <div className="relative p-8 flex flex-col h-full">
           <div className="flex justify-between items-start mb-8">
-            <div className={`p-3 rounded-sm bg-white/5 ${feature.color === 'primary' ? 'text-primary' : 'text-secondary'}`}>
+            <div className={`p-3 rounded-sm bg-surface-alt ${feature.color === 'primary' ? 'text-primary' : 'text-tech-accent'}`}>
               <feature.icon className="w-8 h-8" />
             </div>
-            <span className="font-paragraph text-[10px] text-white/20 uppercase tracking-widest">
+            <span className="font-paragraph text-[10px] text-foreground/30 uppercase tracking-widest">
               MOD.0{index + 1}
             </span>
           </div>
@@ -428,17 +428,17 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
             {feature.description}
           </p>
           
-          <div className="flex items-center gap-2 text-xs font-paragraph uppercase tracking-wider text-white/40 group-hover:text-white transition-colors">
+          <div className="flex items-center gap-2 text-xs font-paragraph uppercase tracking-wider text-foreground/40 group-hover:text-foreground transition-colors">
             <span>Access Module</span>
             <ArrowRight className="w-3 h-3 transform group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
         
         {/* Tech Corners */}
-        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20" />
-        <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20" />
-        <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20" />
-        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20" />
+        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-border-subtle" />
+        <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-border-subtle" />
+        <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-border-subtle" />
+        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-border-subtle" />
       </Link>
     </motion.div>
   );
@@ -454,13 +454,13 @@ function TimelineStep({ number, title, description, imageSrc, color }: { number:
       initial={{ opacity: 0, x: 50 }}
       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
       transition={{ duration: 0.7 }}
-      className="group grid grid-cols-1 md:grid-cols-2 gap-8 items-center border-l border-white/10 pl-8 md:pl-12 relative"
+      className="group grid grid-cols-1 md:grid-cols-2 gap-8 items-center border-l border-border-subtle pl-8 md:pl-12 relative"
     >
       {/* Timeline Dot */}
-      <div className={`absolute left-[-5px] top-0 w-[9px] h-[9px] rounded-full ${color === 'primary' ? 'bg-primary' : 'bg-secondary'} ring-4 ring-background`} />
+      <div className={`absolute left-[-5px] top-0 w-[9px] h-[9px] rounded-full ${color === 'primary' ? 'bg-primary' : 'bg-tech-accent'} ring-4 ring-background`} />
 
       <div className="order-2 md:order-1">
-        <span className={`block font-paragraph text-sm font-bold ${color === 'primary' ? 'text-primary' : 'text-secondary'} mb-2 tracking-widest`}>
+        <span className={`block font-paragraph text-sm font-bold ${color === 'primary' ? 'text-primary' : 'text-tech-accent'} mb-2 tracking-widest`}>
           STEP {number}
         </span>
         <h3 className="font-heading text-3xl uppercase mb-4">{title}</h3>
@@ -469,8 +469,8 @@ function TimelineStep({ number, title, description, imageSrc, color }: { number:
         </p>
       </div>
 
-      <div className="order-1 md:order-2 relative aspect-video overflow-hidden clip-tech-corner bg-white/5">
-        <div className={`absolute inset-0 mix-blend-overlay z-10 ${color === 'primary' ? 'bg-primary/20' : 'bg-secondary/20'}`} />
+      <div className="order-1 md:order-2 relative aspect-video overflow-hidden clip-tech-corner bg-surface-alt">
+        <div className={`absolute inset-0 mix-blend-overlay z-10 ${color === 'primary' ? 'bg-primary/20' : 'bg-tech-accent/20'}`} />
         <Image
           src={imageSrc}
           alt={title}

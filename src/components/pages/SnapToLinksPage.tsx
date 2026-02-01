@@ -91,14 +91,14 @@ export default function SnapToLinksPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="p-8 bg-white/[0.03] backdrop-blur-xl border-glass-border">
+            <Card className="p-8 bg-surface backdrop-blur-xl border-border-subtle">
               <h2 className="font-heading text-2xl uppercase mb-6 text-primary">
                 UPLOAD IMAGE
               </h2>
 
               {!uploadedImage ? (
                 <label className="block cursor-pointer">
-                  <div className="aspect-square border-2 border-dashed border-glass-border rounded flex flex-col items-center justify-center hover:border-primary transition-colors">
+                  <div className="aspect-square border-2 border-dashed border-border-subtle rounded flex flex-col items-center justify-center hover:border-primary transition-colors">
                     <Upload className="w-16 h-16 text-primary mb-4" />
                     <p className="font-paragraph text-sm text-foreground/70 mb-2">
                       CLICK TO UPLOAD OR DRAG & DROP
@@ -116,7 +116,7 @@ export default function SnapToLinksPage() {
                 </label>
               ) : (
                 <div className="space-y-4">
-                  <div className="aspect-square rounded overflow-hidden border border-glass-border">
+                  <div className="aspect-square rounded overflow-hidden border border-border-subtle">
                     <Image src={uploadedImage} alt="Uploaded" className="w-full h-full object-cover" />
                   </div>
                   <Button
@@ -125,7 +125,7 @@ export default function SnapToLinksPage() {
                       setDetectedItems([]);
                     }}
                     variant="outline"
-                    className="w-full border-glass-border"
+                    className="w-full border-border-subtle"
                   >
                     UPLOAD NEW IMAGE
                   </Button>

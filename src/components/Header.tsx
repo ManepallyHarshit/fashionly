@@ -17,11 +17,11 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-xl border-b border-glass-border">
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-xl border-b border-border-subtle">
       <div className="max-w-[100rem] mx-auto px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="font-heading text-2xl uppercase tracking-tight text-primary hover:text-primary/80 transition-colors">
+          <Link to="/" className="font-heading text-2xl uppercase tracking-tight text-primary hover:text-primary-hover transition-colors">
             CYBER-ATELIER
           </Link>
 
@@ -51,7 +51,7 @@ export default function Header() {
                 </Link>
                 <button
                   onClick={actions.logout}
-                  className="hidden md:block font-paragraph text-xs uppercase text-foreground/70 hover:text-secondary transition-colors"
+                  className="hidden md:block font-paragraph text-xs uppercase text-foreground/70 hover:text-tech-accent transition-colors"
                 >
                   SIGN OUT
                 </button>
@@ -59,7 +59,7 @@ export default function Header() {
             ) : (
               <button
                 onClick={actions.login}
-                className="hidden md:block font-paragraph text-xs uppercase px-6 py-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                className="hidden md:block font-paragraph text-xs uppercase px-6 py-2 bg-primary hover:bg-primary-hover text-primary-foreground transition-all"
                 style={{ clipPath: 'polygon(10% 0, 100% 0, 90% 100%, 0 100%)' }}
               >
                 SIGN IN
@@ -67,7 +67,7 @@ export default function Header() {
             )}
 
             <MiniCart
-              cartIconClassName="text-primary hover:text-primary/80 transition-colors"
+              cartIconClassName="text-primary hover:text-primary-hover transition-colors"
             />
 
             {/* Mobile Menu Button */}
@@ -82,7 +82,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-4 pt-4 border-t border-glass-border">
+          <div className="lg:hidden mt-4 pt-4 border-t border-border-subtle">
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
@@ -108,7 +108,7 @@ export default function Header() {
                       actions.logout();
                       setMobileMenuOpen(false);
                     }}
-                    className="font-paragraph text-sm uppercase tracking-wider text-foreground/70 hover:text-secondary transition-colors text-left"
+                    className="font-paragraph text-sm uppercase tracking-wider text-foreground/70 hover:text-tech-accent transition-colors text-left"
                   >
                     SIGN OUT
                   </button>
@@ -119,7 +119,7 @@ export default function Header() {
                     actions.login();
                     setMobileMenuOpen(false);
                   }}
-                  className="font-paragraph text-sm uppercase tracking-wider text-primary hover:text-primary/80 transition-colors text-left"
+                  className="font-paragraph text-sm uppercase tracking-wider text-primary hover:text-primary-hover transition-colors text-left"
                 >
                   SIGN IN
                 </button>
